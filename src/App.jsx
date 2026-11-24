@@ -241,7 +241,7 @@ async function uploadProfilePhoto(e) {
     if (uploadError) throw uploadError
 
     const { data } = supabase.storage
-      .from('portfolio-images')
+      .from('portfolio-test')
       .getPublicUrl(filePath)
 
     setProfileForm(prev => ({
