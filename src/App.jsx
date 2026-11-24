@@ -231,7 +231,7 @@ async function uploadProfilePhoto(e) {
     const filePath = `profile/${Date.now()}.${extension}`
 
     const { error: uploadError } = await supabase.storage
-      .from('portfolio-images')
+      .from('portofolio-images')
       .upload(filePath, file, {
         cacheControl: '3600',
         upsert: false,
@@ -241,7 +241,7 @@ async function uploadProfilePhoto(e) {
     if (uploadError) throw uploadError
 
     const { data } = supabase.storage
-      .from('portfolio-test')
+      .from('portofolio-images')
       .getPublicUrl(filePath)
 
     setProfileForm(prev => ({
@@ -281,7 +281,7 @@ async function uploadProfilePhoto(e) {
       const extension = file.name.split('.').pop().toLowerCase()
       const filePath = `projects/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${extension}`
       const { error: uploadError } = await supabase.storage
-        .from('portfolio-images')
+        .from('portofolio-images')
         .upload(filePath, file, {
           cacheControl: '3600',
           upsert: false,
@@ -290,7 +290,7 @@ async function uploadProfilePhoto(e) {
       if (uploadError) throw uploadError
 
       const { data } = supabase.storage
-        .from('portfolio-images')
+        .from('portofolio-images')
         .getPublicUrl(filePath)
 
       setForm(prev => ({ ...prev, image_url: data.publicUrl }))
